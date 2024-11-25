@@ -127,6 +127,21 @@ form {
   padding: 3.2rem 4rem;
 }
 
+.button-container{
+  display: flex;
+  justify-content: space-between;
+}
+.button-container > button{
+  padding: 0.8rem 1.0rem;
+}
+.settle-button{
+  background-color: #ee4b22;
+  color: white;
+}
+.settle-button:hover {
+  background-color: #c5320d;
+}
+
 label {
   font-weight: 500;
 }

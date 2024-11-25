@@ -22,8 +22,12 @@ const initialFriends = [
 ];
 
 function Button({ children, onClick }) {
+  const isSettle = children.localeCompare("Settle!");
+  console.log(isSettle)
+
+
   return (
-    <button className="button" onClick={onClick}>
+    <button className={`button ${isSettle===0? "settle-button" : ""}`} onClick={onClick}>
       {children}
     </button>
   );
@@ -62,7 +66,9 @@ export default function App() {
   }
 
   function handleSettle() {
-    const isSure = window.confirm(`Are you sure you want to settle with ${selectedFriend.name}?`);
+    const isSure = window.confirm(
+      `Are you sure you want to settle with ${selectedFriend.name}?`
+    );
 
     if (isSure) {
       setFriends((friends) =>
@@ -228,8 +234,13 @@ function FormSplitBill({ selectedFriend, onSplitBill, onSettle }) {
         <option value="user">You</option>
         <option value="friend">{selectedFriend.name}</option>
       </select>
-      <Button>Split!</Button>
-      <Button onClick={onSettle}>Settle!</Button>
+      <div></div>
+      <div className="button-container">
+        <Button>Split!</Button>
+        <Button className="settle-button" onClick={onSettle}>
+          Settle!
+        </Button>
+      </div>
     </form>
   );
 }
